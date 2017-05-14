@@ -7,11 +7,16 @@ import tornado.web
    
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("Hello, world")
-   
+        self.render('index.html',name="hahah")  # 渲染文件
+
+settings = {
+    "template_path":"views", # 模板文件存放路径
+    "static_path":"static" # 静态文件存放路径
+}
+
 application = tornado.web.Application([
     (r"/index", MainHandler),
-])
+],**settings)
    
    
 if __name__ == "__main__":
